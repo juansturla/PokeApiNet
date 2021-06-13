@@ -1,0 +1,139 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage
+    x:Class="PokeApp.Views.ItemDetailPage"
+    xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:model="clr-namespace:PokeApiNet;assembly=PokeApiNet"
+    Title="{Binding SelectedPokemon.Name, Converter={StaticResource stringCapitilzerConverter}}">
+    <ScrollView>
+        <StackLayout Padding="15" Spacing="20">
+            <StackLayout Orientation="Horizontal">
+                <Label FontSize="Medium" Text="N°:" />
+                <Label FontSize="Small" Text="{Binding SelectedPokemon.Id}" />
+            </StackLayout>
+            <StackLayout Orientation="Horizontal">
+                <Label FontSize="Medium" Text="Name:" />
+                <Label FontSize="Small" Text="{Binding SelectedPokemon.Name, Converter={StaticResource stringCapitilzerConverter}}" />
+            </StackLayout>
+            <StackLayout Orientation="Horizontal">
+                <Label FontSize="Medium" Text="Height:" />
+                <Label FontSize="Small" Text="{Binding SelectedPokemon.Height, Converter={StaticResource heightConverter}}" />
+            </StackLayout>
+            <StackLayout Orientation="Horizontal">
+                <Label FontSize="Medium" Text="Weight:" />
+                <Label FontSize="Small" Text="{Binding SelectedPokemon.Weight, Converter={StaticResource weightConverter}}" />
+            </StackLayout>
+
+            <Grid>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="*" />
+                </Grid.RowDefinitions>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="Auto" />
+                    <ColumnDefinition Width="*" />
+                    <ColumnDefinition Width="*" />
+                </Grid.ColumnDefinitions>
+                <Label
+                    Grid.Column="0"
+                    FontSize="Medium"
+                    Text="Types" />
+                <Image Grid.Column="1" Source="{Binding SelectedPokemon.Types[0].Type.Name, Converter={StaticResource typeConverter}}" />
+                <Image Grid.Column="2" Source="{Binding SelectedPokemon.Types[1].Type.Name, Converter={StaticResource typeConverter}}" />
+            </Grid>
+
+
+            <Grid>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="*" />
+                </Grid.RowDefinitions>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="Auto" />
+                    <ColumnDefinition Width="*" />
+                    <ColumnDefinition Width="*" />
+                </Grid.ColumnDefinitions>
+                <Label
+                    Grid.Column="0"
+                    FontSize="Medium"
+                    Text="Abilities" />
+                <Label
+                    Grid.Column="1"
+                    FontSize="Large"
+                    HorizontalTextAlignment="Center"
+                    Text="{Binding SelectedPokemon.Abilities[0].Ability.Name, Converter={StaticResource stringCapitilzerConverter}}" />
+                <Label
+                    Grid.Column="2"
+                    FontSize="Large"
+                    HorizontalTextAlignment="Center"
+                    Text="{Binding SelectedPokemon.Abilities[1].Ability.Name, Converter={StaticResource stringCapitilzerConverter}}" />
+            </Grid>
+            <BoxView
+                BackgroundColor="Black"
+                HeightRequest="1"
+                HorizontalOptions="FillAndExpand" />
+            <Label
+                FontSize="Title"
+                HorizontalOptions="CenterAndExpand"
+                Text="MALE" />
+            <StackLayout
+                HeightRequest="100"
+                HorizontalOptions="FillAndExpand"
+                Orientation="Horizontal">
+                <Image
+                    Aspect="AspectFit"
+                    HorizontalOptions="FillAndExpand"
+                    Source="{Binding SelectedPokemon.Sprites.FrontDefault}"
+                    VerticalOptions="FillAndExpand" />
+                <Image
+                    Aspect="AspectFit"
+                    HorizontalOptions="FillAndExpand"
+                    Source="{Binding SelectedPokemon.Sprites.BackDefault}"
+                    VerticalOptions="FillAndExpand" />
+                <Image
+                    Aspect="AspectFit"
+                    HorizontalOptions="FillAndExpand"
+                    Source="{Binding SelectedPokemon.Sprites.FrontShiny}"
+                    VerticalOptions="FillAndExpand" />
+                <Image
+                    Aspect="AspectFit"
+                    HorizontalOptions="FillAndExpand"
+                    Source="{Binding SelectedPokemon.Sprites.BackShiny}"
+                    VerticalOptions="FillAndExpand" />
+            </StackLayout>
+
+            <BoxView
+                BackgroundColor="Black"
+                HeightRequest="1"
+                HorizontalOptions="FillAndExpand" />
+            <Label
+                FontSize="Title"
+                HorizontalOptions="CenterAndExpand"
+                Text="FEMALE" />
+            <StackLayout
+                HeightRequest="100"
+                HorizontalOptions="FillAndExpand"
+                Orientation="Horizontal">
+                <Image
+                    Aspect="AspectFit"
+                    HorizontalOptions="FillAndExpand"
+                    Source="{Binding SelectedPokemon.Sprites.FrontFemale}"
+                    VerticalOptions="FillAndExpand" />
+                <Image
+                    Aspect="AspectFit"
+                    HorizontalOptions="FillAndExpand"
+                    Source="{Binding SelectedPokemon.Sprites.BackFemale}"
+                    VerticalOptions="FillAndExpand" />
+                <Image
+                    Aspect="AspectFit"
+                    HorizontalOptions="FillAndExpand"
+                    Source="{Binding SelectedPokemon.Sprites.FrontShinyFemale}"
+                    VerticalOptions="FillAndExpand" />
+                <Image
+                    Aspect="AspectFit"
+                    HorizontalOptions="FillAndExpand"
+                    Source="{Binding SelectedPokemon.Sprites.BackShinyFemale}"
+                    VerticalOptions="FillAndExpand" />
+            </StackLayout>
+        </StackLayout>
+    </ScrollView>
+
+</ContentPage>
