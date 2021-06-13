@@ -36,11 +36,12 @@ namespace PokeApp.ViewModels
             try
             {
                 Items.Clear();
-                var items = await DataStore.GetItemsAsync(true);
+                var items = await DataStore.GetItemsAsync(0);
                 foreach (var item in items)
                 {
                     Items.Add(item);
                 }
+                KeepLoadingPokemons();
             }
             catch (Exception ex)
             {
@@ -49,6 +50,17 @@ namespace PokeApp.ViewModels
             finally
             {
                 IsBusy = false;
+            }
+        }
+        private async void KeepLoadingPokemons()
+        {
+            for(int i = 1; i < 10; i++)
+            {
+                var items = await DataStore.GetItemsAsync(i);
+                foreach (var item in items)
+                {
+                    Items.Add(item);
+                }
             }
         }
 

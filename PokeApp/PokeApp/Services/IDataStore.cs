@@ -11,6 +11,6 @@ namespace PokeApp.Services
         Task<bool> DeleteItemAsync(int id);
         Task<T> GetItemAsync(int id);
         Task<T> GetItemAsync(string pokename);
-        Task<IEnumerable<T>> GetItemsAsync(bool forceRefresh = false);
+        Task<IEnumerable<T>> GetItemsAsync(int page);
     }
 }

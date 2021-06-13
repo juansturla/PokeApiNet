@@ -52,10 +52,12 @@ namespace PokeApp.Services
             // return await Task.FromResult(items.FirstOrDefault(s => s.Id == id));
         }
 
-        public async Task<IEnumerable<Pokemon>> GetItemsAsync(bool forceRefresh = false)
+        public async Task<IEnumerable<Pokemon>> GetItemsAsync(int page)
         {
+            //páginas de 20 ponele
+            int pageOffset = page * 20;
             // get a resource by name
-            var pokes = await Task.Run(async()=> pokeClient.GetNamedResourcePageAsync<Pokemon>(150,0));
+            var pokes = await Task.Run(async()=> pokeClient.GetNamedResourcePageAsync<Pokemon>(20,pageOffset));
             var pokeResult = pokes.Result.Results;
             List<Pokemon> pokeList = new List<Pokemon>();
             pokeResult.ForEach(x => pokeList.Add(new Pokemon() { Name = x.Name }));

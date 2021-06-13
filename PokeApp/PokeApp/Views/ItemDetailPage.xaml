@@ -73,9 +73,9 @@
             <Label
                 FontSize="Title"
                 HorizontalOptions="CenterAndExpand"
-                Text="MALE" />
+                Text="NORMAL" />
             <StackLayout
-                HeightRequest="100"
+                HeightRequest="200"
                 HorizontalOptions="FillAndExpand"
                 Orientation="Horizontal">
                 <Image
@@ -88,6 +88,21 @@
                     HorizontalOptions="FillAndExpand"
                     Source="{Binding SelectedPokemon.Sprites.BackDefault}"
                     VerticalOptions="FillAndExpand" />
+
+            </StackLayout>
+
+            <BoxView
+                BackgroundColor="Black"
+                HeightRequest="1"
+                HorizontalOptions="FillAndExpand" />
+            <Label
+                FontSize="Title"
+                HorizontalOptions="CenterAndExpand"
+                Text="SHINY" />
+            <StackLayout
+                HeightRequest="200"
+                HorizontalOptions="FillAndExpand"
+                Orientation="Horizontal">
                 <Image
                     Aspect="AspectFit"
                     HorizontalOptions="FillAndExpand"
@@ -100,39 +115,6 @@
                     VerticalOptions="FillAndExpand" />
             </StackLayout>
 
-            <BoxView
-                BackgroundColor="Black"
-                HeightRequest="1"
-                HorizontalOptions="FillAndExpand" />
-            <Label
-                FontSize="Title"
-                HorizontalOptions="CenterAndExpand"
-                Text="FEMALE" />
-            <StackLayout
-                HeightRequest="100"
-                HorizontalOptions="FillAndExpand"
-                Orientation="Horizontal">
-                <Image
-                    Aspect="AspectFit"
-                    HorizontalOptions="FillAndExpand"
-                    Source="{Binding SelectedPokemon.Sprites.FrontFemale}"
-                    VerticalOptions="FillAndExpand" />
-                <Image
-                    Aspect="AspectFit"
-                    HorizontalOptions="FillAndExpand"
-                    Source="{Binding SelectedPokemon.Sprites.BackFemale}"
-                    VerticalOptions="FillAndExpand" />
-                <Image
-                    Aspect="AspectFit"
-                    HorizontalOptions="FillAndExpand"
-                    Source="{Binding SelectedPokemon.Sprites.FrontShinyFemale}"
-                    VerticalOptions="FillAndExpand" />
-                <Image
-                    Aspect="AspectFit"
-                    HorizontalOptions="FillAndExpand"
-                    Source="{Binding SelectedPokemon.Sprites.BackShinyFemale}"
-                    VerticalOptions="FillAndExpand" />
-            </StackLayout>
         </StackLayout>
     </ScrollView>
 
