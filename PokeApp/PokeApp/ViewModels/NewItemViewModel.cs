@@ -1,5 +1,4 @@
 ﻿using PokeApiNet;
-using PokeApp.Models;
 using System;
 using System.Collections.Generic;
 using System.Text;
@@ -8,12 +7,12 @@ using Xamarin.Forms;
 
 namespace PokeApp.ViewModels
 {
-    public class NewItemViewModel : BaseViewModel
+    public class NewPokemonViewModel : BaseViewModel
     {
         private string text;
         private string description;
 
-        public NewItemViewModel()
+        public NewPokemonViewModel()
         {
             SaveCommand = new Command(OnSave, ValidateSave);
             CancelCommand = new Command(OnCancel);
@@ -50,12 +49,12 @@ namespace PokeApp.ViewModels
 
         private async void OnSave()
         {
-            Pokemon newItem = new Pokemon()
+            Pokemon newPokemon = new Pokemon()
             {
               
             };
 
-            await DataStore.AddItemAsync(newItem);
+            await DataStore.AddPokemonAsync(newPokemon);
 
             // This will pop the current page off the navigation stack
             await Shell.Current.GoToAsync("..");

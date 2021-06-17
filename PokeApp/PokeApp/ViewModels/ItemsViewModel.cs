@@ -1,5 +1,4 @@
 ﻿using PokeApiNet;
-using PokeApp.Models;
 using PokeApp.Views;
 using System;
 using System.Collections.ObjectModel;
@@ -9,37 +8,37 @@ using Xamarin.Forms;
 
 namespace PokeApp.ViewModels
 {
-    public class ItemsViewModel : BaseViewModel
+    public class PokemonsViewModel : BaseViewModel
     {
-        private Pokemon _selectedItem;
+        private Pokemon _selectedPokemon;
 
-        public ObservableCollection<Pokemon> Items { get; }
-        public Command LoadItemsCommand { get; }
-        public Command AddItemCommand { get; }
-        public Command<Pokemon> ItemTapped { get; }
+        public ObservableCollection<Pokemon> Pokemons { get; }
+        public Command LoadPokemonsCommand { get; }
+        public Command AddPokemonCommand { get; }
+        public Command<Pokemon> PokemonTapped { get; }
 
-        public ItemsViewModel()
+        public PokemonsViewModel()
         {
             Title = "Browse";
-            Items = new ObservableCollection<Pokemon>();
-            LoadItemsCommand = new Command(async () => await ExecuteLoadItemsCommand());
+            Pokemons = new ObservableCollection<Pokemon>();
+            LoadPokemonsCommand = new Command(async () => await ExecuteLoadPokemonsCommand());
 
-            ItemTapped = new Command<Pokemon>(OnItemSelected);
+            PokemonTapped = new Command<Pokemon>(OnPokemonSelected);
 
-            AddItemCommand = new Command(OnAddItem);
+            AddPokemonCommand = new Command(OnAddPokemon);
         }
 
-        async Task ExecuteLoadItemsCommand()
+        async Task ExecuteLoadPokemonsCommand()
         {
             IsBusy = true;
 
             try
             {
-                Items.Clear();
-                var items = await DataStore.GetItemsAsync(0);
-                foreach (var item in items)
+                Pokemons.Clear();
+                var pokemons = await DataStore.GetPokemonsAsync(0);
+                foreach (var pokemon in pokemons)
                 {
-                    Items.Add(item);
+                    Pokemons.Add(pokemon);
                 }
                 KeepLoadingPokemons();
             }
@@ -56,10 +55,10 @@ namespace PokeApp.ViewModels
         {
             for(int i = 1; i < 10; i++)
             {
-                var items = await DataStore.GetItemsAsync(i);
-                foreach (var item in items)
+                var pokemons = await DataStore.GetPokemonsAsync(i);
+                foreach (var pokemon in pokemons)
                 {
-                    Items.Add(item);
+                    Pokemons.Add(pokemon);
                 }
             }
         }
@@ -67,31 +66,31 @@ namespace PokeApp.ViewModels
         public void OnAppearing()
         {
             IsBusy = true;
-            SelectedItem = null;
+            SelectedPokemon = null;
         }
 
-        public Pokemon SelectedItem
+        public Pokemon SelectedPokemon
         {
-            get => _selectedItem;
+            get => _selectedPokemon;
             set
             {
-                SetProperty(ref _selectedItem, value);
-                OnItemSelected(value);
+                SetProperty(ref _selectedPokemon, value);
+                OnPokemonSelected(value);
             }
         }
 
-        private async void OnAddItem(object obj)
+        private async void OnAddPokemon(object obj)
         {
-            await Shell.Current.GoToAsync(nameof(NewItemPage));
+            await Shell.Current.GoToAsync(nameof(NewPokemonPage));
         }
 
-        async void OnItemSelected(Pokemon item)
+        async void OnPokemonSelected(Pokemon pokemon)
         {
-            if (item == null)
+            if (pokemon == null)
                 return;
 
-            // This will push the ItemDetailPage onto the navigation stack
-            await Shell.Current.GoToAsync($"{nameof(ItemDetailPage)}?{nameof(ItemDetailViewModel.PokeName)}={item.Name}");
+            // This will push the PokemonDetailPage onto the navigation stack
+            await Shell.Current.GoToAsync($"{nameof(PokemonDetailPage)}?{nameof(PokemonDetailViewModel.PokeName)}={pokemon.Name}");
         }
     }
 }

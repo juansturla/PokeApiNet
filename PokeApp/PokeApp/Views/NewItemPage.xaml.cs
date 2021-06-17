@@ -1,5 +1,4 @@
-﻿using PokeApp.Models;
-using PokeApp.ViewModels;
+﻿using PokeApp.ViewModels;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -8,14 +7,13 @@ using Xamarin.Forms.Xaml;
 
 namespace PokeApp.Views
 {
-    public partial class NewItemPage : ContentPage
+    public partial class NewPokemonPage : ContentPage
     {
-        public Item Item { get; set; }
 
-        public NewItemPage()
+        public NewPokemonPage()
         {
             InitializeComponent();
-            BindingContext = new NewItemViewModel();
+            BindingContext = new NewPokemonViewModel();
         }
     }
 }

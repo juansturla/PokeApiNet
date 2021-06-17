@@ -1,5 +1,4 @@
 ﻿using PokeApiNet;
-using PokeApp.Models;
 using PokeApp.Services;
 using System;
 using System.Collections.Generic;

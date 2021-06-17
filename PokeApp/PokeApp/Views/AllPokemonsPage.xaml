@@ -1,27 +1,27 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <ContentPage
-    x:Class="PokeApp.Views.ItemsPage"
+    x:Class="PokeApp.Views.PokemonsPage"
     xmlns="http://xamarin.com/schemas/2014/forms"
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
     xmlns:local="clr-namespace:PokeApp.ViewModels"
     xmlns:model="clr-namespace:PokeApiNet;assembly=PokeApiNet"
-    x:Name="BrowseItemsPage"
+    x:Name="BrowsePokemonsPage"
     Title="{Binding Title}">
 
     <ContentPage.ToolbarItems>
-        <ToolbarItem Command="{Binding AddItemCommand}" Text="Add" />
+        <ToolbarItem Command="{Binding AddPokemonCommand}" Text="Add" />
     </ContentPage.ToolbarItems>
     <!--
         x:DataType enables compiled bindings for better performance and compile time validation of binding expressions.
         https://docs.microsoft.com/xamarin/xamarin-forms/app-fundamentals/data-binding/compiled-bindings
     -->
     <RefreshView
-        x:DataType="local:ItemsViewModel"
-        Command="{Binding LoadItemsCommand}"
+        x:DataType="local:PokemonsViewModel"
+        Command="{Binding LoadPokemonsCommand}"
         IsRefreshing="{Binding IsBusy, Mode=TwoWay}">
         <CollectionView
-            x:Name="ItemsListView"
-            ItemsSource="{Binding Items}"
+            x:Name="PokemonsListView"
+            ItemsSource="{Binding Pokemons}"
             SelectionMode="None">
             <CollectionView.ItemTemplate>
                 <DataTemplate>
@@ -29,11 +29,11 @@
                         <Label
                             FontSize="16"
                             LineBreakMode="NoWrap"
-                            Style="{DynamicResource ListItemTextStyle}"
+                            Style="{DynamicResource ListPokemonTextStyle}"
                             Text="{Binding Name, Converter={StaticResource stringCapitilzerConverter}}" />
                         <StackLayout.GestureRecognizers>
                             <TapGestureRecognizer
-                                Command="{Binding Source={RelativeSource AncestorType={x:Type local:ItemsViewModel}}, Path=ItemTapped}"
+                                Command="{Binding Source={RelativeSource AncestorType={x:Type local:PokemonsViewModel}}, Path=PokemonTapped}"
                                 CommandParameter="{Binding .}"
                                 NumberOfTapsRequired="1" />
                         </StackLayout.GestureRecognizers>

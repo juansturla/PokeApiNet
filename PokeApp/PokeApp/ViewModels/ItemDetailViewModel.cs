@@ -1,5 +1,4 @@
 ﻿using PokeApiNet;
-using PokeApp.Models;
 using System;
 using System.Diagnostics;
 using System.Threading.Tasks;
@@ -7,11 +6,11 @@ using Xamarin.Forms;
 
 namespace PokeApp.ViewModels
 {
-    [QueryProperty(nameof(ItemId), nameof(ItemId))]
+    [QueryProperty(nameof(PokemonId), nameof(PokemonId))]
     [QueryProperty(nameof(PokeName), nameof(PokeName))]
-    public class ItemDetailViewModel : BaseViewModel
+    public class PokemonDetailViewModel : BaseViewModel
     {
-        private int itemId;
+        private int pokemonId;
         private string _pokename;
         private string text;
         private string description;
@@ -35,16 +34,16 @@ namespace PokeApp.ViewModels
             set => SetProperty(ref description, value);
         }
 
-        public int ItemId
+        public int PokemonId
         {
             get
             {
-                return itemId;
+                return pokemonId;
             }
             set
             {
-                itemId = value;
-                LoadItemId(value);
+                pokemonId = value;
+                LoadPokemonId(value);
             }
         }
         public string PokeName
@@ -56,37 +55,37 @@ namespace PokeApp.ViewModels
             set
             {
                 _pokename = value;
-                LoadItemId(value);
+                LoadPokemonId(value);
             }
         }
 
-        public async void LoadItemId(int itemId)
+        public async void LoadPokemonId(int pokemonId)
         {
             
             try
             {
-                var item = await DataStore.GetItemAsync(itemId);
-                Id = item.Id;
-                Text = item.Name;
-                //Description = item.;
+                var pokemon = await DataStore.GetPokemonAsync(pokemonId);
+                Id = pokemon.Id;
+                Text = pokemon.Name;
+                //Description = pokemon.;
             }
             catch (Exception)
             {
-                Debug.WriteLine("Failed to Load Item");
+                Debug.WriteLine("Failed to Load Pokemon");
             }
         }
-        public async void LoadItemId(string _pokename)
+        public async void LoadPokemonId(string _pokename)
         {
             try
             {
-                SelectedPokemon = await DataStore.GetItemAsync(_pokename);
+                SelectedPokemon = await DataStore.GetPokemonAsync(_pokename);
                 Id = SelectedPokemon.Id;
                 Text = SelectedPokemon.Name;
-                //Description = item.;
+                //Description = pokemon.;
             }
             catch (Exception ex)
             {
-                Debug.WriteLine("Failed to Load Item");
+                Debug.WriteLine("Failed to Load Pokemon");
             }
         }
     }

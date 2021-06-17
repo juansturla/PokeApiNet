@@ -4,12 +4,12 @@ using Xamarin.Forms;
 
 namespace PokeApp.Views
 {
-    public partial class ItemDetailPage : ContentPage
+    public partial class PokemonDetailPage : ContentPage
     {
-        public ItemDetailPage()
+        public PokemonDetailPage()
         {
             InitializeComponent();
-            BindingContext = new ItemDetailViewModel();
+            BindingContext = new PokemonDetailViewModel();
         }
     }
 }

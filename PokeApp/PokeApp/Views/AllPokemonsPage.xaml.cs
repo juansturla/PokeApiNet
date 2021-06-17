@@ -1,5 +1,4 @@
-﻿using PokeApp.Models;
-using PokeApp.ViewModels;
+﻿using PokeApp.ViewModels;
 using PokeApp.Views;
 using System;
 using System.Collections.Generic;
@@ -12,15 +11,15 @@ using Xamarin.Forms.Xaml;
 
 namespace PokeApp.Views
 {
-    public partial class ItemsPage : ContentPage
+    public partial class PokemonsPage : ContentPage
     {
-        ItemsViewModel _viewModel;
+        PokemonsViewModel _viewModel;
 
-        public ItemsPage()
+        public PokemonsPage()
         {
             InitializeComponent();
 
-            BindingContext = _viewModel = new ItemsViewModel();
+            BindingContext = _viewModel = new PokemonsViewModel();
         }
 
         protected override void OnAppearing()

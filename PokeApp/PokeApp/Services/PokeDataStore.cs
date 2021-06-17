@@ -1,5 +1,4 @@
 ﻿using PokeApiNet;
-using PokeApp.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -9,7 +8,7 @@ namespace PokeApp.Services
 {
     public class PokeDataStore : IDataStore<Pokemon>
     {
-        readonly List<Pokemon> items;
+        readonly List<Pokemon> pokemons;
         // instantiate client
 
         PokeApiClient pokeClient = new PokeApiClient();
@@ -17,42 +16,42 @@ namespace PokeApp.Services
         {
         }
 
-        public async Task<bool> AddItemAsync(Pokemon item)
+        public async Task<bool> AddPokemonAsync(Pokemon pokemon)
         {
-            items.Add(item);
+            pokemons.Add(pokemon);
 
             return await Task.FromResult(true);
         }
 
-        public async Task<bool> UpdateItemAsync(Pokemon item)
+        public async Task<bool> UpdatePokemonAsync(Pokemon pokemon)
         {
-            var oldItem = items.Where((Pokemon arg) => arg.Id == item.Id).FirstOrDefault();
-            items.Remove(oldItem);
-            items.Add(item);
+            var oldPokemon = pokemons.Where((Pokemon arg) => arg.Id == pokemon.Id).FirstOrDefault();
+            pokemons.Remove(oldPokemon);
+            pokemons.Add(pokemon);
 
             return await Task.FromResult(true);
         }
 
-        public async Task<bool> DeleteItemAsync(int id)
+        public async Task<bool> DeletePokemonAsync(int id)
         {
 
             return await Task.FromResult(true);
         }
 
-        public async Task<Pokemon> GetItemAsync(int id)
+        public async Task<Pokemon> GetPokemonAsync(int id)
         {
             return null;
-            // return await Task.FromResult(items.FirstOrDefault(s => s.Id == id));
+            // return await Task.FromResult(pokemons.FirstOrDefault(s => s.Id == id));
         }
-        public async Task<Pokemon> GetItemAsync(string pokename)
+        public async Task<Pokemon> GetPokemonAsync(string pokename)
         {
             var pokes = await Task.Run(async () => pokeClient.GetResourceAsync<Pokemon>(pokename));
 
             return pokes.Result;
-            // return await Task.FromResult(items.FirstOrDefault(s => s.Id == id));
+            // return await Task.FromResult(pokemons.FirstOrDefault(s => s.Id == id));
         }
 
-        public async Task<IEnumerable<Pokemon>> GetItemsAsync(int page)
+        public async Task<IEnumerable<Pokemon>> GetPokemonsAsync(int page)
         {
             //páginas de 20 ponele
             int pageOffset = page * 20;

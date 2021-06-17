@@ -14,4 +14,13 @@
   <ItemGroup>
     <ProjectReference Include="..\..\PokeApiNet\PokeApiNet.csproj" />
   </ItemGroup>
+
+  <ItemGroup>
+    <Compile Update="Views\AllPokemonsPage.xaml.cs">
+      <DependentUpon>AllPokemonsPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Update="Views\PokemonDetailPage.xaml.cs">
+      <DependentUpon>PokemonDetailPage.xaml</DependentUpon>
+    </Compile>
+  </ItemGroup>
 </Project>

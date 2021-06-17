@@ -6,11 +6,11 @@ namespace PokeApp.Services
 {
     public interface IDataStore<T>
     {
-        Task<bool> AddItemAsync(T item);
-        Task<bool> UpdateItemAsync(T item);
-        Task<bool> DeleteItemAsync(int id);
-        Task<T> GetItemAsync(int id);
-        Task<T> GetItemAsync(string pokename);
-        Task<IEnumerable<T>> GetItemsAsync(int page);
+        Task<bool> AddPokemonAsync(T pokemon);
+        Task<bool> UpdatePokemonAsync(T pokemon);
+        Task<bool> DeletePokemonAsync(int id);
+        Task<T> GetPokemonAsync(int id);
+        Task<T> GetPokemonAsync(string pokename);
+        Task<IEnumerable<T>> GetPokemonsAsync(int page);
     }
 }
