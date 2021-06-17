@@ -45,9 +45,9 @@ namespace PokeApp.Services
         }
         public async Task<Pokemon> GetPokemonAsync(string pokename)
         {
-            var pokes = await Task.Run(async () => pokeClient.GetResourceAsync<Pokemon>(pokename));
+            var pokes = await Task.Run(() => pokeClient.GetResourceAsync<Pokemon>(pokename));
 
-            return pokes.Result;
+            return pokes;
             // return await Task.FromResult(pokemons.FirstOrDefault(s => s.Id == id));
         }
 
@@ -56,11 +56,12 @@ namespace PokeApp.Services
             //páginas de 20 ponele
             int pageOffset = page * 20;
             // get a resource by name
-            var pokes = await Task.Run(async()=> pokeClient.GetNamedResourcePageAsync<Pokemon>(20,pageOffset));
-            var pokeResult = pokes.Result.Results;
+            var pokes = await Task.Run(()=> pokeClient.GetNamedResourcePageAsync<Pokemon>(20,pageOffset));
+            var pokeResult = pokes.Results;
             List<Pokemon> pokeList = new List<Pokemon>();
             pokeResult.ForEach(x => pokeList.Add(new Pokemon() { Name = x.Name }));
             return await Task.FromResult(pokeList);
         }
+        //juanlindo♥yanihermosa♥
     }
 }

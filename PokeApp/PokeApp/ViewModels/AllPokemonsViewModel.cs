@@ -38,6 +38,7 @@ namespace PokeApp.ViewModels
                 var pokemons = await DataStore.GetPokemonsAsync(0);
                 foreach (var pokemon in pokemons)
                 {
+
                     Pokemons.Add(pokemon);
                 }
                 KeepLoadingPokemons();
