@@ -12,7 +12,7 @@ namespace PokeApp_Maui8.Converters
         {
             string type = (string)value;
 
-            return type + "IC.png";
+            return type + "_ic.png";
         }
 
         public object ConvertBack(object value, Type targetType, object parameter, CultureInfo culture)

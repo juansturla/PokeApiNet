@@ -3,7 +3,9 @@
     x:Class="PokeApp_Maui8.Views.PokemonDetailPage"
     xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-    Title="{Binding SelectedPokemon.Name, Converter={StaticResource stringCapitilzerConverter}}">
+    xmlns:local="clr-namespace:PokeApp_Maui8.ViewModels"
+    Title="{Binding SelectedPokemon.Name, Converter={StaticResource stringCapitilzerConverter}}"
+    x:DataType="local:PokemonDetailViewModel">
     <ScrollView>
         <StackLayout Padding="15" Spacing="20">
             <StackLayout Orientation="Horizontal">
@@ -23,33 +25,40 @@
                 <Label FontSize="Small" Text="{Binding SelectedPokemon.Weight, Converter={StaticResource weightConverter}}" />
             </StackLayout>
 
-            <Grid>
-                <Grid.RowDefinitions>
-                    <RowDefinition Height="*" />
-                </Grid.RowDefinitions>
-                <Grid.ColumnDefinitions>
-                    <ColumnDefinition Width="Auto" />
-                    <ColumnDefinition Width="*" />
-                    <ColumnDefinition Width="*" />
-                </Grid.ColumnDefinitions>
+            <StackLayout BackgroundColor="Aqua" Orientation="Horizontal">
+                <Label FontSize="Medium" Text="Types" />
+                <Grid
+                    BackgroundColor="Red"
+                    ColumnDefinitions="*,*"
+                    HorizontalOptions="StartAndExpand">
+                    <Image
+                        Grid.Column="0"
+                        Aspect="AspectFit"
+                        Source="{Binding SelectedPokemon.Types[0].Type.Name, Converter={StaticResource typeToImageConverter}}" />
+                    <Image
+                        Grid.Column="1"
+                        Aspect="AspectFit"
+                        Source="{Binding SelectedPokemon.Types[1].Type.Name, Converter={StaticResource typeToImageConverter}}" />
+                </Grid>
+            </StackLayout>
+
+            <Grid ColumnDefinitions="Auto,*,*" ColumnSpacing="6">
                 <Label
                     Grid.Column="0"
                     FontSize="Medium"
                     Text="Types" />
-                <Image Grid.Column="1" Source="{Binding SelectedPokemon.Types[0].Type.Name, Converter={StaticResource typeToImageConverter}}" />
-                <Image Grid.Column="2" Source="{Binding SelectedPokemon.Types[1].Type.Name, Converter={StaticResource typeToImageConverter}}" />
+                <Image
+                    Grid.Column="1"
+                    Aspect="AspectFit"
+                    Source="{Binding SelectedPokemon.Types[0].Type.Name, Converter={StaticResource typeToImageConverter}}" />
+                <Image
+                    Grid.Column="2"
+                    Aspect="AspectFit"
+                    Source="{Binding SelectedPokemon.Types[1].Type.Name, Converter={StaticResource typeToImageConverter}}" />
             </Grid>
 
 
-            <Grid>
-                <Grid.RowDefinitions>
-                    <RowDefinition Height="*" />
-                </Grid.RowDefinitions>
-                <Grid.ColumnDefinitions>
-                    <ColumnDefinition Width="Auto" />
-                    <ColumnDefinition Width="*" />
-                    <ColumnDefinition Width="*" />
-                </Grid.ColumnDefinitions>
+            <Grid ColumnDefinitions="Auto,*,*">
                 <Label
                     Grid.Column="0"
                     FontSize="Medium"
@@ -73,22 +82,23 @@
                 FontSize="Title"
                 HorizontalOptions="CenterAndExpand"
                 Text="NORMAL" />
-            <StackLayout
+            <Grid
+                ColumnDefinitions="*,*"
                 HeightRequest="200"
-                HorizontalOptions="FillAndExpand"
-                Orientation="Horizontal">
+                HorizontalOptions="FillAndExpand">
                 <Image
+                    Grid.Column="0"
                     Aspect="AspectFit"
                     HorizontalOptions="FillAndExpand"
                     Source="{Binding SelectedPokemon.Sprites.FrontDefault}"
                     VerticalOptions="FillAndExpand" />
                 <Image
+                    Grid.Column="1"
                     Aspect="AspectFit"
                     HorizontalOptions="FillAndExpand"
                     Source="{Binding SelectedPokemon.Sprites.BackDefault}"
                     VerticalOptions="FillAndExpand" />
-
-            </StackLayout>
+            </Grid>
 
             <BoxView
                 BackgroundColor="Black"
@@ -98,21 +108,23 @@
                 FontSize="Title"
                 HorizontalOptions="CenterAndExpand"
                 Text="SHINY" />
-            <StackLayout
+            <Grid
+                ColumnDefinitions="*,*"
                 HeightRequest="200"
-                HorizontalOptions="FillAndExpand"
-                Orientation="Horizontal">
+                HorizontalOptions="FillAndExpand">
                 <Image
+                    Grid.Column="0"
                     Aspect="AspectFit"
                     HorizontalOptions="FillAndExpand"
                     Source="{Binding SelectedPokemon.Sprites.FrontShiny}"
                     VerticalOptions="FillAndExpand" />
                 <Image
+                    Grid.Column="1"
                     Aspect="AspectFit"
                     HorizontalOptions="FillAndExpand"
                     Source="{Binding SelectedPokemon.Sprites.BackShiny}"
                     VerticalOptions="FillAndExpand" />
-            </StackLayout>
+            </Grid>
 
         </StackLayout>
     </ScrollView>

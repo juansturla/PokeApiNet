@@ -47,27 +47,27 @@
 	</ItemGroup>
 
 	<ItemGroup>
-	  <MauiImage Remove="Resources\Images\bugIC.png" />
-	  <MauiImage Remove="Resources\Images\darkIC.png" />
-	  <MauiImage Remove="Resources\Images\dragonIC.png" />
-	  <MauiImage Remove="Resources\Images\electricIC.png" />
-	  <MauiImage Remove="Resources\Images\fairyIC.png" />
-	  <MauiImage Remove="Resources\Images\fightingIC.png" />
-	  <MauiImage Remove="Resources\Images\fireIC.png" />
-	  <MauiImage Remove="Resources\Images\flyingIC.png" />
-	  <MauiImage Remove="Resources\Images\ghostIC.png" />
-	  <MauiImage Remove="Resources\Images\grassIC.png" />
-	  <MauiImage Remove="Resources\Images\groundIC.png" />
-	  <MauiImage Remove="Resources\Images\iceIC.png" />
-	  <MauiImage Remove="Resources\Images\icon_about.png" />
-	  <MauiImage Remove="Resources\Images\icon_feed.png" />
-	  <MauiImage Remove="Resources\Images\normalIC.png" />
-	  <MauiImage Remove="Resources\Images\poisonic.png" />
-	  <MauiImage Remove="Resources\Images\psychicIC.png" />
-	  <MauiImage Remove="Resources\Images\rockIC.png" />
-	  <MauiImage Remove="Resources\Images\steelIC.png" />
-	  <MauiImage Remove="Resources\Images\waterIC.png" />
-	  <MauiImage Remove="Resources\Images\xamarin_logo.png" />
+	  <None Remove="Resources\Images\bug_ic.png" />
+	  <None Remove="Resources\Images\dark_ic.png" />
+	  <None Remove="Resources\Images\dragon_ic.png" />
+	  <None Remove="Resources\Images\electric_ic.png" />
+	  <None Remove="Resources\Images\fairy_ic.png" />
+	  <None Remove="Resources\Images\fighting_ic.png" />
+	  <None Remove="Resources\Images\fire_ic.png" />
+	  <None Remove="Resources\Images\flying_ic.png" />
+	  <None Remove="Resources\Images\ghost_ic.png" />
+	  <None Remove="Resources\Images\grass_ic.png" />
+	  <None Remove="Resources\Images\ground_ic.png" />
+	  <None Remove="Resources\Images\ice_ic.png" />
+	  <None Remove="Resources\Images\icon_about.png" />
+	  <None Remove="Resources\Images\icon_feed.png" />
+	  <None Remove="Resources\Images\normal_ic.png" />
+	  <None Remove="Resources\Images\poison_ic.png" />
+	  <None Remove="Resources\Images\psychic_ic.png" />
+	  <None Remove="Resources\Images\rock_ic.png" />
+	  <None Remove="Resources\Images\steel_ic.png" />
+	  <None Remove="Resources\Images\water_ic.png" />
+	  <None Remove="Resources\Images\xamarin_logo.png" />
 	</ItemGroup>
 
 	<ItemGroup>
