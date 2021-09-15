@@ -1,0 +1,116 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+	<PropertyGroup>
+		<TargetFrameworks>net6.0-ios;net6.0-android;</TargetFrameworks>
+		<!-- <TargetFrameworks Condition="$([MSBuild]::IsOSPlatform('windows')) and '$(MSBuildRuntimeType)' == 'Full'">$(TargetFrameworks);net6.0-windows10.0.19041</TargetFrameworks> -->
+		<OutputType>Exe</OutputType>
+		<RootNamespace>PokeApp_Maui8</RootNamespace>
+		<UseMaui>true</UseMaui>
+		<SingleProject>true</SingleProject>
+		<EnablePreviewMsixTooling>true</EnablePreviewMsixTooling>
+
+		<!-- Display name -->
+		<ApplicationTitle>PokeApp_Maui8</ApplicationTitle>
+
+		<!-- App Identifier -->
+		<ApplicationId>com.companyname.PokeApp_Maui8</ApplicationId>
+
+		<!-- Versions -->
+		<ApplicationVersion>1.0</ApplicationVersion>
+		<AndroidVersionCode>1</AndroidVersionCode>
+
+		<!-- Required for C# Hot Reload -->
+		<UseInterpreter Condition="'$(Configuration)' == 'Debug'">True</UseInterpreter>
+		<StartupObject></StartupObject>
+	</PropertyGroup>
+
+	<ItemGroup>
+		<!-- App Icon -->
+		<MauiImage Include="Resources\appicon.svg" ForegroundFile="Resources\appiconfg.svg" IsAppIcon="true" Color="#512BD4" />
+
+		<!-- Splash Screen -->
+		<MauiSplashScreen Include="Resources\appiconfg.svg" Color="#512BD4" />
+
+		<!-- Images -->
+		<MauiImage Include="Resources\Images\*" />
+
+		<!-- Custom Fonts -->
+		<MauiFont Include="Resources\Fonts\*" />
+	</ItemGroup>
+
+	<ItemGroup Condition="$(TargetFramework.Contains('-windows'))">
+		<!-- Required - WinUI does not yet have buildTransitive for everything -->
+		<PackageReference Include="Microsoft.WindowsAppSDK" Version="1.0.0-experimental1" />
+		<PackageReference Include="Microsoft.WindowsAppSDK.Foundation" Version="1.0.0-experimental1" />
+		<PackageReference Include="Microsoft.WindowsAppSDK.WinUI" Version="1.0.0-experimental1" />
+		<PackageReference Include="Microsoft.WindowsAppSDK.InteractiveExperiences" Version="1.0.0-experimental1" NoWarn="NU1701" />
+	</ItemGroup>
+
+	<ItemGroup>
+	  <MauiImage Remove="Resources\Images\bugIC.png" />
+	  <MauiImage Remove="Resources\Images\darkIC.png" />
+	  <MauiImage Remove="Resources\Images\dragonIC.png" />
+	  <MauiImage Remove="Resources\Images\electricIC.png" />
+	  <MauiImage Remove="Resources\Images\fairyIC.png" />
+	  <MauiImage Remove="Resources\Images\fightingIC.png" />
+	  <MauiImage Remove="Resources\Images\fireIC.png" />
+	  <MauiImage Remove="Resources\Images\flyingIC.png" />
+	  <MauiImage Remove="Resources\Images\ghostIC.png" />
+	  <MauiImage Remove="Resources\Images\grassIC.png" />
+	  <MauiImage Remove="Resources\Images\groundIC.png" />
+	  <MauiImage Remove="Resources\Images\iceIC.png" />
+	  <MauiImage Remove="Resources\Images\icon_about.png" />
+	  <MauiImage Remove="Resources\Images\icon_feed.png" />
+	  <MauiImage Remove="Resources\Images\normalIC.png" />
+	  <MauiImage Remove="Resources\Images\poisonic.png" />
+	  <MauiImage Remove="Resources\Images\psychicIC.png" />
+	  <MauiImage Remove="Resources\Images\rockIC.png" />
+	  <MauiImage Remove="Resources\Images\steelIC.png" />
+	  <MauiImage Remove="Resources\Images\waterIC.png" />
+	  <MauiImage Remove="Resources\Images\xamarin_logo.png" />
+	</ItemGroup>
+
+	<ItemGroup>
+	  <ProjectReference Include="..\PokeApiNet\PokeApiNet.csproj" />
+	</ItemGroup>
+
+	<ItemGroup>
+	  <Compile Update="AppShell.xaml.cs">
+	    <DependentUpon>%(Filename)</DependentUpon>
+	  </Compile>
+	  <Compile Update="Views\AllPokemonsPage.xaml.cs">
+	    <DependentUpon>%(Filename)</DependentUpon>
+	  </Compile>
+	  <Compile Update="Views\NewItemPage.xaml.cs">
+	    <DependentUpon>%(Filename)</DependentUpon>
+	  </Compile>
+	  <Compile Update="Views\PokemonDetailPage.xaml.cs">
+	    <DependentUpon>%(Filename)</DependentUpon>
+	  </Compile>
+	</ItemGroup>
+
+	<ItemGroup>
+	  <MauiXaml Update="AppShell.xaml">
+	    <SubType>Designer</SubType>
+	    <Generator></Generator>
+	  </MauiXaml>
+	  <MauiXaml Update="Views\AllPokemonsPage.xaml">
+	    <SubType>Designer</SubType>
+	    <Generator></Generator>
+	  </MauiXaml>
+	  <MauiXaml Update="Views\NewItemPage.xaml">
+	    <SubType>Designer</SubType>
+	    <Generator></Generator>
+	  </MauiXaml>
+	  <MauiXaml Update="Views\PokemonDetailPage.xaml">
+	    <SubType>Designer</SubType>
+	    <Generator></Generator>
+	  </MauiXaml>
+	</ItemGroup>
+
+	<PropertyGroup Condition="$(TargetFramework.Contains('-windows'))">
+		<OutputType>WinExe</OutputType>
+		<RuntimeIdentifier>win-x64</RuntimeIdentifier>
+	</PropertyGroup>
+
+</Project>
