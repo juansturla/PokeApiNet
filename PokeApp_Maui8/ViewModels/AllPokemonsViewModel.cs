@@ -35,13 +35,14 @@ namespace PokeApp_Maui8.ViewModels
             try
             {
                 Pokemons.Clear();
-                var pokemons = await DataStore.GetPokemonsAsync(0);
-                foreach (var pokemon in pokemons)
-                {
-
-                    Pokemons.Add(pokemon);
-                }
-                KeepLoadingPokemons();
+                //var pokemons = await DataStore.GetPokemonsAsync(0);
+                //foreach (var pokemon in pokemons)
+                //{
+                //
+                //    Pokemons.Add(pokemon);
+                //}
+                //KeepLoadingPokemons();
+                LoadAllPokemonsDeUna();
             }
             catch (Exception ex)
             {
@@ -54,13 +55,25 @@ namespace PokeApp_Maui8.ViewModels
         }
         private async void KeepLoadingPokemons()
         {
-            for(int i = 1; i < 10; i++)
+            for (int i = 1; i < 150; i++)
             {
-                var pokemons = await DataStore.GetPokemonsAsync(i);
-                foreach (var pokemon in pokemons)
+                var pokemon = await DataStore.GetPokemonAsync(i);
+                Pokemons.Add(pokemon);
+            }
+        }
+        private async void LoadAllPokemonsDeUna()
+        {
+            int i = 1;
+            while (i < 150)
+            {
+                try
                 {
+                    var pokemon = await DataStore.GetPokemonAsync(i);
+
                     Pokemons.Add(pokemon);
+                    i++;
                 }
+                catch (Exception) { }
             }
         }
 

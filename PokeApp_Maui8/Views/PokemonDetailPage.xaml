@@ -36,8 +36,8 @@
                     Grid.Column="0"
                     FontSize="Medium"
                     Text="Types" />
-                <Image Grid.Column="1" Source="{Binding SelectedPokemon.Types[0].Type.Name, Converter={StaticResource typeConverter}}" />
-                <Image Grid.Column="2" Source="{Binding SelectedPokemon.Types[1].Type.Name, Converter={StaticResource typeConverter}}" />
+                <Image Grid.Column="1" Source="{Binding SelectedPokemon.Types[0].Type.Name, Converter={StaticResource typeToImageConverter}}" />
+                <Image Grid.Column="2" Source="{Binding SelectedPokemon.Types[1].Type.Name, Converter={StaticResource typeToImageConverter}}" />
             </Grid>
 
 

@@ -20,22 +20,66 @@
         x:DataType="local:PokemonsViewModel"
             ItemsSource="{Binding Pokemons}"
             SelectionMode="None">
-            <CollectionView.ItemTemplate>
-                <DataTemplate  x:DataType="model:Pokemon">
-                    <StackLayout Padding="10" >
-                        <Label
+        <CollectionView.ItemTemplate>
+            <DataTemplate>
+                <Grid x:Name="myGrid" x:DataType="model:Pokemon">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="Auto" />
+                        <RowDefinition Height="Auto" />
+                    </Grid.RowDefinitions>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*" />
+                        <ColumnDefinition Width="*" />
+                    </Grid.ColumnDefinitions>
+                    <!--<Grid.Background>
+                        <LinearGradientBrush StartPoint="0,0" EndPoint="1,1">
+                            <GradientStop x:Name="FirstColor" Offset="0.3" Color="{Binding Source={x:Reference myGrid}, Path=BindingContext.Types[0].Type.Name, Converter={StaticResource typeToColorConverter}}" />
+                            <GradientStop Offset=".7">
+                                <GradientStop.Color>
+                                    <MultiBinding Converter="{StaticResource pokeTypesToSecondColor}">
+                                        <Binding Path="BindingContext.Types[0].Type.Name" Source="{x:Reference myGrid}" />
+
+                                        <Binding Path="BindingContext.Types[1].Type.Name" Source="{x:Reference myGrid}" />
+                                    </MultiBinding>
+                                </GradientStop.Color>
+                            </GradientStop>
+                        </LinearGradientBrush>
+                    </Grid.Background>-->
+                    <Image
+                            Grid.RowSpan="2"
+                            Grid.Column="0"
+                            HeightRequest="100"
+                            Source="{Binding Sprites.FrontDefault}"
+                            WidthRequest="100" />
+                    <Label
+                            Grid.Column="1"
+                            FontSize="16"
+                            LineBreakMode="NoWrap"
+                            Style="{DynamicResource ListPokemonTextStyle}"
+                            Text="{Binding Id, StringFormat='#{0}'}" />
+                    <Label
+                            Grid.Row="1"
+                            Grid.Column="1"
                             FontSize="16"
                             LineBreakMode="NoWrap"
                             Style="{DynamicResource ListPokemonTextStyle}"
                             Text="{Binding Name, Converter={StaticResource stringCapitilzerConverter}}" />
-                        <StackLayout.GestureRecognizers>
-                            <TapGestureRecognizer
+
+                    <BoxView
+                            Grid.Row="1"
+                            Grid.ColumnSpan="2"
+                            BackgroundColor="Black"
+                            HeightRequest="1"
+                            VerticalOptions="End"
+                            Color="black" />
+                    <Grid.GestureRecognizers>
+                        <TapGestureRecognizer
                                 Command="{Binding Source={RelativeSource AncestorType={x:Type local:PokemonsViewModel}}, Path=PokemonTapped}"
                                 CommandParameter="{Binding .}"
                                 NumberOfTapsRequired="1" />
-                        </StackLayout.GestureRecognizers>
-                    </StackLayout>
-                </DataTemplate>
-            </CollectionView.ItemTemplate>
-        </CollectionView>
+                    </Grid.GestureRecognizers>
+                </Grid>
+            </DataTemplate>
+        </CollectionView.ItemTemplate>
+    </CollectionView>
 </ContentPage>

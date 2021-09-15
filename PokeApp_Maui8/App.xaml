@@ -7,22 +7,35 @@
              windows:Application.ImageDirectory="Assets">
     <Application.Resources>
         <ResourceDictionary>
-
-            <Color x:Key="PrimaryColor">#512bdf</Color>
-            <Color x:Key="SecondaryColor">White</Color>
-
+            <converters:WeightConverter x:Key="weightConverter" />
+            <converters:HeightConverter x:Key="heightConverter" />
+            <converters:TypeToImageConverter x:Key="typeToImageConverter" />
+            <!--<converters:TypeToColorConverter x:Key="typeToColorConverter" />
+            <converters:PokeTypesToSecondColor x:Key="pokeTypesToSecondColor" />-->
+            <converters:StringCapitalizerConverter x:Key="stringCapitilzerConverter" />
+            <Color x:Key="Primary">#2196F3</Color>
             <Style TargetType="Label">
-                <Setter Property="TextColor" Value="{DynamicResource PrimaryColor}" />
-                <Setter Property="FontFamily" Value="OpenSansRegular" />
+                <Setter Property="VerticalTextAlignment" Value="Center" />
             </Style>
-
             <Style TargetType="Button">
-                <Setter Property="TextColor" Value="{DynamicResource SecondaryColor}" />
-                <Setter Property="FontFamily" Value="OpenSansRegular" />
-                <Setter Property="BackgroundColor" Value="{DynamicResource PrimaryColor}" />
-                <Setter Property="Padding" Value="14,10" />
+                <Setter Property="TextColor" Value="White" />
+                <Setter Property="VisualStateManager.VisualStateGroups">
+                    <VisualStateGroupList>
+                        <VisualStateGroup x:Name="CommonStates">
+                            <VisualState x:Name="Normal">
+                                <VisualState.Setters>
+                                    <Setter Property="BackgroundColor" Value="{StaticResource Primary}" />
+                                </VisualState.Setters>
+                            </VisualState>
+                            <VisualState x:Name="Disabled">
+                                <VisualState.Setters>
+                                    <Setter Property="BackgroundColor" Value="#332196F3" />
+                                </VisualState.Setters>
+                            </VisualState>
+                        </VisualStateGroup>
+                    </VisualStateGroupList>
+                </Setter>
             </Style>
-
         </ResourceDictionary>
     </Application.Resources>
 </Application>
