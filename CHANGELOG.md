@@ -1,3 +1,5 @@
+This changelog is the PokeApi Changelog
+
 # Changelog
 
 ## 3.0.2
