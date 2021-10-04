@@ -6,43 +6,25 @@
     xmlns:local="clr-namespace:PokeApp_Maui8.ViewModels"
     Title="{Binding SelectedPokemon.Name, Converter={StaticResource stringCapitilzerConverter}}"
     x:DataType="local:PokemonDetailViewModel">
-    <ScrollView>
-        <StackLayout Padding="15" Spacing="20">
+    <Grid ColumnDefinitions="*,*" RowDefinitions="*,*,*,*,**,,*,3*,*,3*">
             <StackLayout Orientation="Horizontal">
                 <Label FontSize="Medium" Text="N°:" />
                 <Label FontSize="Small" Text="{Binding SelectedPokemon.Id}" />
             </StackLayout>
-            <StackLayout Orientation="Horizontal">
+            <StackLayout Orientation="Horizontal" GridLayout.Column="1">
                 <Label FontSize="Medium" Text="Name:" />
                 <Label FontSize="Small" Text="{Binding SelectedPokemon.Name, Converter={StaticResource stringCapitilzerConverter}}" />
             </StackLayout>
-            <StackLayout Orientation="Horizontal">
+            <StackLayout Orientation="Horizontal" GridLayout.Row="1">
                 <Label FontSize="Medium" Text="Height:" />
                 <Label FontSize="Small" Text="{Binding SelectedPokemon.Height, Converter={StaticResource heightConverter}}" />
             </StackLayout>
-            <StackLayout Orientation="Horizontal">
+            <StackLayout Orientation="Horizontal" GridLayout.Column="1" GridLayout.Row="1">
                 <Label FontSize="Medium" Text="Weight:" />
                 <Label FontSize="Small" Text="{Binding SelectedPokemon.Weight, Converter={StaticResource weightConverter}}" />
             </StackLayout>
 
-            <StackLayout BackgroundColor="Aqua" Orientation="Horizontal">
-                <Label FontSize="Medium" Text="Types" />
-                <Grid
-                    BackgroundColor="Red"
-                    ColumnDefinitions="*,*"
-                    HorizontalOptions="StartAndExpand">
-                    <Image
-                        Grid.Column="0"
-                        Aspect="AspectFit"
-                        Source="{Binding SelectedPokemon.Types[0].Type.Name, Converter={StaticResource typeToImageConverter}}" />
-                    <Image
-                        Grid.Column="1"
-                        Aspect="AspectFit"
-                        Source="{Binding SelectedPokemon.Types[1].Type.Name, Converter={StaticResource typeToImageConverter}}" />
-                </Grid>
-            </StackLayout>
-
-            <Grid ColumnDefinitions="Auto,*,*" ColumnSpacing="6">
+            <Grid ColumnDefinitions="Auto,*,*" ColumnSpacing="6" GridLayout.Row="2" GridLayout.ColumnSpan="2">
                 <Label
                     Grid.Column="0"
                     FontSize="Medium"
@@ -58,7 +40,7 @@
             </Grid>
 
 
-            <Grid ColumnDefinitions="Auto,*,*">
+            <Grid ColumnDefinitions="Auto,*,*" GridLayout.Row="3" GridLayout.ColumnSpan="2">
                 <Label
                     Grid.Column="0"
                     FontSize="Medium"
@@ -74,15 +56,15 @@
                     HorizontalTextAlignment="Center"
                     Text="{Binding SelectedPokemon.Abilities[1].Ability.Name, Converter={StaticResource stringCapitilzerConverter}}" />
             </Grid>
-            <BoxView
+            <BoxView GridLayout.Row="4" GridLayout.ColumnSpan="2"
                 BackgroundColor="Black"
                 HeightRequest="1"
                 HorizontalOptions="FillAndExpand" />
-            <Label
+            <Label GridLayout.Row="5" GridLayout.ColumnSpan="2"
                 FontSize="Title"
                 HorizontalOptions="CenterAndExpand"
                 Text="NORMAL" />
-            <Grid
+            <Grid GridLayout.Row="6" GridLayout.ColumnSpan="2"
                 ColumnDefinitions="*,*"
                 HeightRequest="200"
                 HorizontalOptions="FillAndExpand">
@@ -100,15 +82,15 @@
                     VerticalOptions="FillAndExpand" />
             </Grid>
 
-            <BoxView
+            <BoxView GridLayout.Row="7" GridLayout.ColumnSpan="2"
                 BackgroundColor="Black"
                 HeightRequest="1"
                 HorizontalOptions="FillAndExpand" />
-            <Label
+            <Label GridLayout.Row="8" GridLayout.ColumnSpan="2"
                 FontSize="Title"
                 HorizontalOptions="CenterAndExpand"
                 Text="SHINY" />
-            <Grid
+            <Grid GridLayout.Row="9" GridLayout.ColumnSpan="2"
                 ColumnDefinitions="*,*"
                 HeightRequest="200"
                 HorizontalOptions="FillAndExpand">
@@ -126,7 +108,6 @@
                     VerticalOptions="FillAndExpand" />
             </Grid>
 
-        </StackLayout>
-    </ScrollView>
+    </Grid>
 
 </ContentPage>
